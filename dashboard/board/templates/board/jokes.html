@@ -1,0 +1,24 @@
+{% extends 'board/base.html' %}
+{% block content %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_table }}
+    <input type="submit" value="Send me a joke!">
+</form>
+
+<div style="margin-top:10%; font-size:14">
+  <small style="opacity:0.5;">
+Want to get more jokes? <a href="{% url 'subscribe_jokes' %}"></small>Subscribe here!</a>
+
+</div>
+{% endblock content %}

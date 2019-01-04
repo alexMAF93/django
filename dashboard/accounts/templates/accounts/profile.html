@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+<h3> {{ user.username }} 's profile page</h3>
+<strong>Email Address: </strong><small>{{ user.email }}</small>
+<br>
+<strong>Location: </strong><small>{{ user.location }}</small>
+<br>
+<strong>Profile Image: </strong><small>{{ user.image }}</small>
+<br>
+<a href = '#'>Edit Profile</a>
+{% endblock %}

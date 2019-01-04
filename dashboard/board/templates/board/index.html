@@ -1,0 +1,18 @@
+{% extends 'board/base.html' %}
+
+{% block content %}
+
+
+
+<ul>
+  <li><a href="{% url 'apps' %}">Apps</a></li>
+  <li><a href="#">My Posts</a></li>
+  <li><a href="#">Public Posts</a></li>
+  <li><a href="{% url 'server' %}"">Server details</a></li>
+  <li><a href="{% url 'show_profile' %}">User Profile</a></li>
+  <li><a href="{% url 'logout' %}">Logout</a></li>
+</ul>
+
+
+
+{% endblock content %}
