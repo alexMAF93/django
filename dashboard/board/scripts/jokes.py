@@ -4,6 +4,7 @@
 from email.mime.text import MIMEText
 from subprocess import PIPE, Popen
 import smtplib, urllib.request, re, sys
+from useful_functions import get_credentials_for_email as get_creds
 
 
 def check_if_email(recipients):
@@ -45,11 +46,13 @@ msg = MIMEText(MESSAGE)
 msg["Subject"] = "Esti cel mai tare!!!"
 msg["From"] = "alex"
 msg["To"] = "everyone"
+ACCOUNT = get_creds('/home/alex/parole/send_email.txt')[0]
+PASSWORD = get_creds('/home/alex/parole/send_email.txt')[1].replace('\n', '')
 
 
 t = smtplib.SMTP("smtp.gmail.com", 587)
 t.ehlo()
 t.starttls()
-t.login("maf.alex93@gmail.com", "parolasmechera")
-t.sendmail("maf.alex93@gmail.com", recipients, msg.as_string())
+t.login(ACCOUNT, PASSWORD)
+t.sendmail(ACCOUNT, recipients, msg.as_string())
 t.quit()
