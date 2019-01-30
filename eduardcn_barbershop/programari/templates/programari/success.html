@@ -1,0 +1,9 @@
+<h1>Programare realizata cu success</h1>
+
+<p>Detalii</p>
+{% for entry in programari %}
+<li> {{ entry.nume }}, la ora {{ entry.ora_programare }} </li>
+{% endfor %}
+
+
+<a href = "{% url 'index' %}">Home</a>

@@ -1,0 +1,10 @@
+<h4>Salut</h4><h5>Alege o zi</h5>
+
+
+{% for z_date, z_day in next_2_weeks.items %}
+  <div>
+    <a href="programari/{{ z_date }}">
+      {{ z_date }}, {{ z_day }}
+    </a>
+  </div>
+{% endfor %}
