@@ -4,7 +4,9 @@
 {% for z_date, z_day in next_2_weeks.items %}
   <div>
     <a href="programari/{{ z_date }}">
-      {{ z_date }}, {{ z_day }}
+      {{ z_date }}, {{ z_day }}, {{ programari_ramase|get_item:z_date }} locuri ramase
     </a>
   </div>
 {% endfor %}
+
+<a href = "{% url 'admin' %}">Admin</a>

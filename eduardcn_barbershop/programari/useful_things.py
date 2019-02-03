@@ -19,7 +19,7 @@ def next_2_weeks(date = ""):
     return next_2_weeks
 
 
-def time_choices(date = '27-01-2019'):
+def time_choices(date):
     from .models import DetaliiZi
     TIME_CHOICES = []
     time_choices = []
@@ -28,7 +28,5 @@ def time_choices(date = '27-01-2019'):
             TIME_CHOICES.append(str(i) + ':00')
         else:
             TIME_CHOICES.append('0' + str(i) + ':00')
-    for i in TIME_CHOICES:
-        time_choices.append((i, i))
 
-    return tuple(time_choices)
+    return tuple(TIME_CHOICES)

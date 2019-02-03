@@ -1,0 +1,71 @@
+
+
+<form method="post">
+      {% csrf_token %}
+      <br>Data
+      <select name = 'data'>
+      {% for entry in DetaliiZi %}
+      <option value = "{{ entry.data }}">{{ entry.data }}</option>
+      {% endfor %}
+      </select>
+      <br>De la:
+      <select name = 'start_time'>
+        {% for entry in options1 %}
+            <option value = "{{ entry }}">{{ entry }}</option>
+        {% endfor %}
+      </select>
+      <br>Pana la:
+      <select name = 'end_time'>
+        {% for entry in options2 %}
+        <option value = "{{ entry }}">{{ entry }}</option>
+        {% endfor %}
+      </select>
+      <br>Numar de programari:
+      <input name = "max_programari" type = "text">
+      <br>
+      <input type="submit" name="modifica_zi" value="Modifica!">
+</form>
+
+Gaseste o programare:
+<form method="post">
+    {% csrf_token %}
+    <br>Numar de telefon
+    <input name = "numar_telefon" type = "text">
+    <br>
+    <input type="submit" name="cauta_programare" value="Cauta o programare">
+</form>
+
+<div> {{ message }}
+  <br>
+
+
+{% if detalii %}
+
+<form method="post">
+    {% csrf_token %}
+    Sterge Programare<br>
+    {% for entry in detalii %}
+      <input type="checkbox" name = 'content-sters' value = "{{ entry.data }}%{{ entry.telefon }}">{{ entry.data }} -- {{ entry.nume }} -- {{ entry.telefon }} -- {{ entry.ora_programare }} <br>
+    {% endfor %}
+    <br>
+    <input type="submit" name = "sterge" value="Sterge">
+    <br><br><br>
+    Modifica ora
+    <br>
+    {% for entry in detalii %}
+      {{ entry.data }} -- {{ entry.nume }} -- {{ entry.telefon }} -- {{ entry.ora_programare }} --
+      <select name ='modifica_ora'>
+        {% for option in options1 %}
+        <option value = "{{ entry.data }}%{{ entry.telefon }}%{{ option }}"> {{ option }}</option>
+        {% endfor %}
+      </select>
+      <br>
+    {% endfor %}
+    <br>
+    <input type="submit" name = "modificare_ora" value="Modifica ora">
+    <br>
+</form>
+
+{% endif%}
+
+  <a href = "{% url 'index' %}">Home</a><p><a href="{% url 'logout' %}">logout</a></p>

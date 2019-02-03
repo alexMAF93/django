@@ -10,25 +10,26 @@
 {% if programari_ramase > 0 %}
 <h4>Fa o Programare:</h4>
 <div>
-  <form method="post">
-    {% csrf_token %}
-    <table>
-      {% for field in form %}
-      <tbody>
-        <tr>
-          <td>
-        <label>{{ field.label_tag }}</label>
-        </td>
-        <td>
-        {{ field }}
-        </td>
-        </tr>
-      {% endfor %}
-      <tr>
-        <td><input type="submit" style="float: right;" value="Fa o programare!">
-          </td></tr>
-    </table>
-  </form>
+
+  <form action="{% url 'make_programare' date.0 %}" method="post">
+      {% csrf_token %}
+      Nume:
+      <input name = "nume" type = "text">
+      <br>
+      Numar de telefon:
+      <input name = "numar" type = "text">
+      <br>
+      Ora programarii:
+      <select name = 'ora_programare'>
+        {% for optiune in optiuni %}
+          <option value="{{ optiune }}"> {{ optiune }}</option>
+          {% endfor %}
+      </select>
+      <br>
+      <input type="submit" value="Fa Programarea!">
+    </form>
+
+
 </div>
 {% endif %}
 {% if messages %}
