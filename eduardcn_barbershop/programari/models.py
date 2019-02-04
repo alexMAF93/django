@@ -4,6 +4,7 @@ from django.db import models
 class Programare(models.Model):
     class Meta:
         ordering =[
+            'data',
             'ora_programare',
         ]
     data = models.CharField(max_length = 10)

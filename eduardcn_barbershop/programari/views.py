@@ -20,7 +20,12 @@ def index(request):
             de_sters = DetaliiZi.objects.filter(data = object.data)
             de_sters.delete()
 
-
+    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.txt'
+    for object in Programare.objects.all():
+        if object.data not in next_2_weeks():
+            with open(FILE, 'a') as f:
+                f.write(str(object.data).ljust(15) + str(object.nume).ljust(30) + str(object.telefon).ljust(15) + str(object.ora_programare) + '\n')
+                object.delete()
     from django.template.defaulttags import register
 
 
@@ -158,3 +163,12 @@ def make_programare(request, date):
                     'optiuni': time_choices(date),
                     'programari_ramase': programari_ramase,
                     })
+
+
+@login_required
+def istoric(request):
+    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.txt'
+    f = open(FILE, 'r')
+    content = f.readlines()
+    f.close()
+    return render(request, 'programari/istoric.html', {'content': content})
