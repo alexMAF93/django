@@ -1,4 +1,14 @@
+{% extends 'programari/base.html' %}
+
+{% block content %}
+
+
+
 {% for line in content %}
 {{ line|linebreaks }}
 {% endfor %}
-<a href = "{% url 'index' %}">Home</a>
+
+
+
+
+{% endblock content %}

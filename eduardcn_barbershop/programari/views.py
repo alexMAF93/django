@@ -127,6 +127,13 @@ def admin(request):
 def make_programare(request, date):
     max_programari = DetaliiZi.objects.filter(data = date)[0].max_programari
     programari_zi = Programare.objects.filter(data = date).count()
+    ore_luate = []
+    for object in Programare.objects.filter(data = date):
+        ore_luate.append(object.ora_programare)
+    ore_disponibile = []
+    for ora in time_choices(date):
+        if ora not in ore_luate:
+            ore_disponibile.append(ora)
     programari_ramase = max_programari - programari_zi
     nume = ""
     numar = ""
@@ -160,7 +167,7 @@ def make_programare(request, date):
 
     return render(request, 'programari/programari.html', {'date': [date, next_2_weeks(date)],
                     'programari': Programare.objects.filter(data = date),
-                    'optiuni': time_choices(date),
+                    'optiuni': ore_disponibile,
                     'programari_ramase': programari_ramase,
                     })
 
@@ -172,3 +179,22 @@ def istoric(request):
     content = f.readlines()
     f.close()
     return render(request, 'programari/istoric.html', {'content': content})
+
+
+def cauta_programare(request):
+    rezultat = []
+    mesaj = ""
+    if request.method == "POST":
+        numar_telefon = str(request.POST['cauta-telefon'])
+        for object in Programare.objects.filter(telefon = numar_telefon):
+            rezultat.append('{} - {} - {} - {}'.format(object.data, object.nume, object.telefon, object.ora_programare))
+
+        if len(rezultat) == 0:
+            mesaj = "Nu au fost gasite programari pentru acest numar de telefon"
+        elif len(rezultat) == 1:
+            mesaj = "Exista o programare pentru acest numar de telefon:".format(len(rezultat))
+        else:
+            mesaj = "Exista {} programari pentru acest numar de telefon:".format(len(rezultat))
+
+
+    return render(request, 'programari/cauta_programare.html', {'rezultat': rezultat, 'mesaj': mesaj, })

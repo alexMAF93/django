@@ -1,0 +1,30 @@
+{% load static %}
+
+<html>
+<head>
+    {% if title %}
+      <title> {{ title }} </title>
+    {% else %}
+      <title>Dashboard</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{% static 'programari/main.css' %}">
+</head>
+
+<body>
+
+  <a href = "{% url 'index' %}">Home</a> | <a href = "{% url 'cauta_programare' %}">Cauta o programare</a> | <a href = "{% url 'admin' %}">Admin</a>
+<div class="site-header">
+{% block content %}
+
+{% endblock %}
+</div>
+
+
+{% if user.is_authenticated %}
+
+  <p><a href="{% url 'logout' %}">logout</a> | <a href="{% url 'istoric' %}">Istoric</a></p>
+
+{% endif %}
+
+</body>
+</html>

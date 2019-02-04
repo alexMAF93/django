@@ -1,11 +1,18 @@
-<h1>Programari in data de {{ date.0 }}</h1>
+{% extends 'programari/base.html' %}
 
-<ul>
-{% for entry in programari %}
-<li> {{ entry.nume }}, la ora {{ entry.ora_programare }}, {{ entry.telefon }} </li>
-{% endfor %}
+{% block content %}
+
+
+
+<h1>Fa o programare pentru data de {{ date.0 }}</h1>
+{% if user.is_authenticated %}
+  <ul>
+  {% for entry in programari %}
+
+  <li> {{ entry.nume }}, la ora {{ entry.ora_programare }}, {{ entry.telefon }} </li>
+  {% endfor %}
 <uL>
-
+{% endif %}
 
 {% if programari_ramase > 0 %}
 <h4>Fa o Programare:</h4>
@@ -45,4 +52,8 @@
 <div>Nu mai sunt locuri disponibile. Te rugam sa incerci in alta zi</div>
 {% endif %}
 <br>
-<a href = "{% url 'index' %}">Home</a>
+
+
+
+
+{% endblock content %}

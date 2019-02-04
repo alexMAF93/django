@@ -7,4 +7,5 @@ urlpatterns = [
     path('programari/<date>/', views.make_programare, name = 'make_programare'),
     path('edi/', views.admin, name = 'admin'),
     path('edi/istoric', views.istoric, name = 'istoric'),
+    path('cauta_programare/', views.cauta_programare, name = 'cauta_programare'),
 ]
