@@ -4,6 +4,8 @@
 
 
 
+
+
 <h1>Fa o programare pentru data de {{ date.0 }}</h1>
 {% if user.is_authenticated %}
   <ul>
@@ -15,19 +17,19 @@
 {% endif %}
 
 {% if programari_ramase > 0 %}
-<h4>Fa o Programare:</h4>
+<h4>Pentru a face o programare, completeaza formularul de mai jos</h4>
 <div>
 
   <form action="{% url 'make_programare' date.0 %}" method="post">
       {% csrf_token %}
-      Nume:
-      <input name = "nume" type = "text">
+      Nume:<br>
+      <input name = "nume" type = "text" class="mac">
       <br>
-      Numar de telefon:
-      <input name = "numar" type = "text">
+      Numar de telefon:<br>
+      <input name = "numar" type = "text" class="mac">
       <br>
-      Ora programarii:
-      <select name = 'ora_programare'>
+      Ora programarii:<br>
+      <select name = 'ora_programare' class="search_categories">
         {% for optiune in optiuni %}
           <option value="{{ optiune }}"> {{ optiune }}</option>
           {% endfor %}

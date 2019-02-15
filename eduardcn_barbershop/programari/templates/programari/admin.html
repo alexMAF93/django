@@ -7,19 +7,19 @@
 <form method="post">
       {% csrf_token %}
       <br>Data
-      <select name = 'data'>
+      <select name = 'data' class="search_categories">
       {% for entry in DetaliiZi %}
       <option value = "{{ entry.data }}">{{ entry.data }}</option>
       {% endfor %}
       </select>
       <br>De la:
-      <select name = 'start_time'>
+      <select name = 'start_time' class="search_categories">
         {% for entry in options1 %}
             <option value = "{{ entry }}">{{ entry }}</option>
         {% endfor %}
       </select>
       <br>Pana la:
-      <select name = 'end_time'>
+      <select name = 'end_time' class="search_categories">
         {% for entry in options2 %}
         <option value = "{{ entry }}">{{ entry }}</option>
         {% endfor %}

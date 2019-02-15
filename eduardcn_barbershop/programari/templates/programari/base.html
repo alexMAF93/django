@@ -12,19 +12,23 @@
 
 <body>
 
-  <a href = "{% url 'index' %}">Home</a> | <a href = "{% url 'cauta_programare' %}">Cauta o programare</a> | <a href = "{% url 'admin' %}">Admin</a>
-<div class="site-header">
+
+<div class="v-wrap">
+  <div class="v-box">
+<p align=center><a href = "{% url 'index' %}">Home</a> | <a href = "{% url 'cauta_programare' %}">Cauta o programare</a> | <a href = "{% url 'admin' %}">Admin</a></p>
 {% block content %}
 
 {% endblock %}
-</div>
-
-
 {% if user.is_authenticated %}
 
   <p><a href="{% url 'logout' %}">logout</a> | <a href="{% url 'istoric' %}">Istoric</a></p>
 
 {% endif %}
+
+</div>
+</div>
+
+
 
 </body>
 </html>
