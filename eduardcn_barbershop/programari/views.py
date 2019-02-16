@@ -20,11 +20,14 @@ def index(request):
             de_sters = DetaliiZi.objects.filter(data = object.data)
             de_sters.delete()
 
-    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.txt'
+    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.csv'
     for object in Programare.objects.all():
         if object.data not in next_2_weeks():
             with open(FILE, 'a') as f:
-                f.write(str(object.data).ljust(15) + str(object.nume).ljust(30) + str(object.telefon).ljust(15) + str(object.ora_programare) + '\n')
+                f.write(str(object.data).ljust(15) + ','
+                    + str(object.nume).ljust(30) + ','
+                    + str(object.telefon).ljust(15) + ','
+                    + str(object.ora_programare) + '\n')
                 object.delete()
     from django.template.defaulttags import register
 
@@ -93,7 +96,7 @@ def admin(request):
                 de_sters = Programare.objects.filter(data = data_de_sters, telefon = telefon_de_sters)
                 msg = "Programarea pentru numarul de telefon {} din data de {} a fost stearsa cu success".format(telefon_de_sters, data_de_sters)
                 de_sters.delete()
-                message += msg +'<br>'
+                message += msg
         elif 'modificare_ora' in request.POST:
             msg = ""
             for item in request.POST.getlist('modifica_ora'):
@@ -117,7 +120,7 @@ def admin(request):
                         msg = "Doar la aceste ore poti programare in data de {} : {}".format(data_modificare, interval_modificare)
                     else:
                         msg = "Exista deja o programare pentru ora {}".format(ora_modificare)
-                    message += msg + '<br>'
+                    message += msg
     return render(request, 'programari/admin.html', {'DetaliiZi': DetaliiZi.objects.all(), 'options1': options,
                                                         'options2': options2,
                                                         'message': message,
@@ -174,7 +177,7 @@ def make_programare(request, date):
 
 @login_required
 def istoric(request):
-    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.txt'
+    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.csv'
     f = open(FILE, 'r')
     content = f.readlines()
     f.close()
@@ -187,14 +190,14 @@ def cauta_programare(request):
     if request.method == "POST":
         numar_telefon = str(request.POST['cauta-telefon'])
         for object in Programare.objects.filter(telefon = numar_telefon):
-            rezultat.append('{} - {} - {} - {}'.format(object.data, object.nume, object.telefon, object.ora_programare))
+            rezultat.append('Programare pe data de {} pentru {} la ora {}'.format(object.data, object.nume, object.ora_programare))
 
         if len(rezultat) == 0:
-            mesaj = "Nu au fost gasite programari pentru acest numar de telefon"
+            mesaj = "Nu au fost gasite programari pentru numarul {}".format(object.telefon)
         elif len(rezultat) == 1:
-            mesaj = "Exista o programare pentru acest numar de telefon:".format(len(rezultat))
+            mesaj = "Exista o programare pentru numarul {}:".format(object.telefon)
         else:
-            mesaj = "Exista {} programari pentru acest numar de telefon:".format(len(rezultat))
+            mesaj = "Exista {} programari pentru numarul {}:".format(len(rezultat), object.telefon)
 
 
     return render(request, 'programari/cauta_programare.html', {'rezultat': rezultat, 'mesaj': mesaj, })

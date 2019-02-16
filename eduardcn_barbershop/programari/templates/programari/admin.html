@@ -6,34 +6,33 @@
 
 <form method="post">
       {% csrf_token %}
-      <br>Data
+      <br>Data<br>
       <select name = 'data' class="search_categories">
       {% for entry in DetaliiZi %}
       <option value = "{{ entry.data }}">{{ entry.data }}</option>
       {% endfor %}
       </select>
-      <br>De la:
+      <br>Incepand cu ora <br>
       <select name = 'start_time' class="search_categories">
         {% for entry in options1 %}
             <option value = "{{ entry }}">{{ entry }}</option>
         {% endfor %}
       </select>
-      <br>Pana la:
+      <br>Pana la ora<br>
       <select name = 'end_time' class="search_categories">
         {% for entry in options2 %}
         <option value = "{{ entry }}">{{ entry }}</option>
         {% endfor %}
       </select>
-      <br>Numar de programari:
+      <br>Numar de programari <br>
       <input name = "max_programari" type = "text">
       <br>
       <input type="submit" name="modifica_zi" value="Modifica!">
 </form>
 
-Gaseste o programare:
+Gaseste o programare dupa numarul de telefon
 <form method="post">
     {% csrf_token %}
-    <br>Numar de telefon
     <input name = "numar_telefon" type = "text">
     <br>
     <input type="submit" name="cauta_programare" value="Cauta o programare">
@@ -49,7 +48,7 @@ Gaseste o programare:
     {% csrf_token %}
     Sterge Programare<br>
     {% for entry in detalii %}
-      <input type="checkbox" name = 'content-sters' value = "{{ entry.data }}%{{ entry.telefon }}">{{ entry.data }} -- {{ entry.nume }} -- {{ entry.telefon }} -- {{ entry.ora_programare }} <br>
+      <input type="checkbox" name = 'content-sters' value = "{{ entry.data }}%{{ entry.telefon }}">Data: {{ entry.data }} | Nume: {{ entry.nume }} | Telefon: {{ entry.telefon }} | Ora: {{ entry.ora_programare }} <br>
     {% endfor %}
     <br>
     <input type="submit" name = "sterge" value="Sterge">
@@ -57,7 +56,11 @@ Gaseste o programare:
     Modifica ora
     <br>
     {% for entry in detalii %}
-      {{ entry.data }} -- {{ entry.nume }} -- {{ entry.telefon }} -- {{ entry.ora_programare }} --
+      Data: {{ entry.data }} |
+      Nume: {{ entry.nume }} |
+      Telefon: {{ entry.telefon }} |
+      Ora: {{ entry.ora_programare }} |
+      Noua ora:
       <select name ='modifica_ora'>
         {% for option in options1 %}
         <option value = "{{ entry.data }}%{{ entry.telefon }}%{{ option }}"> {{ option }}</option>
@@ -71,7 +74,7 @@ Gaseste o programare:
 </form>
 
 {% endif%}
-
+<br><br><br><br>
 
 
 {% endblock content %}

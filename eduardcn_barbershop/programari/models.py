@@ -14,10 +14,6 @@ class Programare(models.Model):
 
 
 class DetaliiZi(models.Model):
-    class Meta:
-        ordering = [
-            'data',
-        ]
     data = models.CharField(max_length = 10, unique = True)
     max_programari = models.IntegerField(default = 0)
     start_time = models.IntegerField(default = 11)

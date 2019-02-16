@@ -2,11 +2,8 @@
 
 <html>
 <head>
-    {% if title %}
-      <title> {{ title }} </title>
-    {% else %}
-      <title>Dashboard</title>
-    {% endif %}
+    <title>Eduard CN Barbershop</title>
+    <link rel="icon" type="image/png" href="../../static/programari/ico.png" />
     <link rel="stylesheet" type="text/css" href="{% static 'programari/main.css' %}">
 </head>
 
@@ -15,15 +12,30 @@
 
 <div class="v-wrap">
   <div class="v-box">
-<p align=center><a href = "{% url 'index' %}">Home</a> | <a href = "{% url 'cauta_programare' %}">Cauta o programare</a> | <a href = "{% url 'admin' %}">Admin</a></p>
+<!--    <img src="../../static/programari/eduard_cn_logo.jpg" width="35%" lenght="50%"> -->
+<header>
+  <a href = "{% url 'index' %}">
+    <button class="button-menu">Home</button>
+  </a>
+  <a href = "{% url 'cauta_programare' %}">
+    <button class="button-menu">Cautare</button>
+  <a href = "{% url 'admin' %}">
+    <button class="button-menu">Admin</button>
+  </a>
+  {% if user.is_authenticated %}
+    <a href="{% url 'istoric' %}">
+      <button class="button-menu">Istoric</button>
+    </a>
+    <a href="{% url 'logout' %}">
+      <button class="button-menu">logout</button>
+    </a>
+  {% endif %}
+</header>
+
+<div align="center">
 {% block content %}
-
 {% endblock %}
-{% if user.is_authenticated %}
-
-  <p><a href="{% url 'logout' %}">logout</a> | <a href="{% url 'istoric' %}">Istoric</a></p>
-
-{% endif %}
+</div>
 
 </div>
 </div>

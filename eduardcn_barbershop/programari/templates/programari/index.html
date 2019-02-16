@@ -2,20 +2,28 @@
 
 {% block content %}
 
-
-
-
-<h4>Salut</h4><h5>Alege o zi</h5>
-
-
+<table>
 {% for z_date, z_day in next_2_weeks.items %}
-  <div>
-    <a href="programari/{{ z_date }}">
-      {{ z_date }}, {{ z_day }}, {{ programari_ramase|get_item:z_date }} locuri ramase
-    </a>
-  </div>
+  {% cycle '<tr>' '' '' %}
+    <td>
+      <a href="programari/{{ z_date }}">
+        {% if programari_ramase|get_item:z_date >= 5 %}
+          <button class="button-green">
+        {% elif programari_ramase|get_item:z_date < 5 and programari_ramase|get_item:z_date >= 3 %}
+          <button class="button-orange">
+        {% elif programari_ramase|get_item:z_date < 3 and programari_ramase|get_item:z_date >= 1 %}
+          <button class="button-orangered">
+        {% else %}
+          <button class="button-red">
+        {% endif %}
+        {{ z_date }}
+        <br> {{ z_day }}
+        <br>{{ programari_ramase|get_item:z_date }} locuri disponibile
+          </button>
+        </a>
+    </td>
+  {% cycle '' '' '</tr>' %}
 {% endfor %}
-
 
 
 
