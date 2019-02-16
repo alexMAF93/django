@@ -193,7 +193,7 @@ def cauta_programare(request):
             rezultat.append('Programare pe data de {} pentru {} la ora {}'.format(object.data, object.nume, object.ora_programare))
 
         if len(rezultat) == 0:
-            mesaj = "Nu au fost gasite programari pentru numarul {}".format(object.telefon)
+            mesaj = "Nu au fost gasite programari pentru numarul {}".format(numar_telefon)
         elif len(rezultat) == 1:
             mesaj = "Exista o programare pentru numarul {}:".format(object.telefon)
         else:
