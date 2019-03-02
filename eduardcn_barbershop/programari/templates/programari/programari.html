@@ -8,12 +8,17 @@
 
 <h1> {{ date.0 }}, {{ date.1 }}</h1>
 {% if user.is_authenticated %}
-  <ul>
+  {% if programari %}
+  <table class="programari"><tr><th>Nume</th><th>Ora</th><th>Telefon</th></tr>
   {% for entry in programari %}
-
-  <li> {{ entry.nume }}, la ora {{ entry.ora_programare }}, {{ entry.telefon }} </li>
+  <tr>
+  <td>{{ entry.nume }}</td><td>{{ entry.ora_programare }}</td><td>{{ entry.telefon }}</td>
+  </tr>
   {% endfor %}
-<uL>
+  </table>
+  {% else %}
+  <table class="programari"><tr><th align=center>Nicio Programare facuta</th></tr></table>
+  {% endif %}
 {% endif %}
 
 {% if programari_ramase > 0 %}
