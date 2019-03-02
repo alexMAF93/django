@@ -1,71 +1,318 @@
-        padding: 10px 15px;
-        position: relative;
-        transition: all 300ms;
+html, body { width: 100vw; height: 50vh;}
+
+
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+header {
+  background-image: url("eduard_cn_logo.jpg");
+  background-repeat: no-repeat, repeat-x;
+  background-position: top center, bottom;
+  height: 355px;
+  max-width: 100%;
+  width: inherit;
+
+}
+.green {
+  display: block;
+  height: 80%;
+}
+.blue {
+  display: block;
+  font-size: 2em;
+  height: 20%;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+.v-wrap{
+    height: 100%;
+    white-space: nowrap;
+    text-align: center;
+    font-family:Algerian;
+}
+.v-wrap:before{
+    content: "";
+    display: inline-block;
+    vertical-align: top;
+    width: 0;
+    /* adjust for white space between pseudo element and next sibling */
+    margin-right: -.25em;
+    /* stretch line height */
+    height: 100%;
+}
+.v-box{
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    background-repeat: no-repeat;
+}
+
+input[type=text] {
+  text-align: center;
+    padding:5px;
+    border:2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin:5;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=submit] {
+	-moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1), color-stop(1, #0061a7));
+	background:-moz-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:-webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:-o-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:-ms-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7',GradientType=0);
+	background-color:#007dc1;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+  margin: 5;
+}
+input[type=submit]:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1));
+	background:-moz-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:-webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:-o-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:-ms-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1',GradientType=0);
+	background-color:#0061a7;
+}
+input[type=submit]:active {
+	position:relative;
+	top:1px;
+}
+
+
+.search_categories{
+  font-size: 13px;
+  padding: 10px 8px 10px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search_categories .select{
+  width: 120%;
+  background:url('arrow.png') no-repeat;
+  background-position:80% center;
+}
+
+.search_categories .select select{
+  background: transparent;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 120%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}
+
+
+.button-green {
+  width: 200px;
+  border: 0;
+  border-radius: 0.15rem;
+  background: #1E88E5;
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.button-orange {
+  width: 200px;
+  border: 0;
+  border-radius: 0.15rem;
+  background: orange;
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.button-red {
+  width: 200px;
+  border: 0;
+  border-radius: 0.15rem;
+  background: #282828 ;
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.button-orangered {
+  width: 200px;
+  border: 0;
+  border-radius: 0.15rem;
+  background: #e62e00;
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.button-menu {
+  width: 155px;
+  border: 0;
+  border-radius: 0.15rem;
+  background: #956534;
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;table.programari
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+
+
+button:hover {
+  background: #956534;
+}
+.button-red:hover {
+  background: #282828;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+table.programari {
+	background: #956534;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 14px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: left;
+	width: 500px;
+}
+
+table.programari td {
+	border-right: 1px solid #fff;
+	border-left: 1px solid #e8e8e8;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
   color: white;
 }
 
 
 table.programari td:first-child {
-        box-shadow: inset 1px 0 0 #fff;
+	box-shadow: inset 1px 0 0 #fff;
 }
 
 table.programari td:last-child {
-        border-right: 1px solid #e8e8e8;
-        box-shadow: inset -1px 0 0 #fff;
+	border-right: 1px solid #e8e8e8;
+	box-shadow: inset -1px 0 0 #fff;
 }
 
 table.programari tr {
-        background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
+	background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
 }
 
 table.programari tr:nth-child(odd) td {
-        background: #bf8142 url(https://jackrugile.com/images/misc/noise-diagonal.png);
+	background: #bf8142 url(https://jackrugile.com/images/misc/noise-diagonal.png);
 }
 
 table.programari tr:last-of-type td {
-        box-shadow: inset 0 -1px 0 #fff;
+	box-shadow: inset 0 -1px 0 #fff;
 }
 
 table.programari tr:last-of-type td:first-child {
-        box-shadow: inset 1px -1px 0 #fff;
+	box-shadow: inset 1px -1px 0 #fff;
 }
 
 table.programari tr:last-of-type td:last-child {
-        box-shadow: inset -1px -1px 0 #fff;
+	box-shadow: inset -1px -1px 0 #fff;
 }
 
 
 table.programari th {
-        background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#956534, #191109);
-        border-left: 1px solid #555;
-        border-right: 1px solid #777;
-        border-top: 1px solid #555;
-        border-bottom: 1px solid #333;
-        box-shadow: inset 0 1px 0 #999;
-        color: white;
+	background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#956534, #191109);
+	border-left: 1px solid #555;
+	border-right: 1px solid #777;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow: inset 0 1px 0 #999;
+	color: white;
   font-weight: bold;
-        padding: 10px 15px;
-        position: relative;
-        text-shadow: 0 1px 0 #000;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;
 }
 
 table.programari th:after {
-        background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
-        content: '';
-        display: block;
-        height: 25%;
-        left: 0;
-        margin: 1px 0 0 0;
-        position: absolute;
-        top: 25%;
-        width: 100%;
+	background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+	content: '';
+	display: block;
+	height: 25%;
+	left: 0;
+	margin: 1px 0 0 0;
+	position: absolute;
+	top: 25%;
+	width: 100%;
 }
 
 table.programari th:first-child {
-        border-left: 1px solid #777;
-        box-shadow: inset 1px 1px 0 #999;
+	border-left: 1px solid #777;
+	box-shadow: inset 1px 1px 0 #999;
 }
 
 table.programari th:last-child {
-        box-shadow: inset -1px 1px 0 #999;
+	box-shadow: inset -1px 1px 0 #999;
 }
