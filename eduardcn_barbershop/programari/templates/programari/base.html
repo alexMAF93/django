@@ -15,6 +15,20 @@
   <div class="v-box">
 <!--    <img src="../../static/programari/eduard_cn_logo.jpg" width="35%" lenght="50%"> -->
 <header>
+  {% if user.is_authenticated %}
+  <a href = "{% url 'index' %}">
+    <button class="button-menu">Home</button>
+  </a>
+  <a href = "{% url 'admin' %}">
+    <button class="button-menu">Admin</button>
+  </a>
+    <a href="{% url 'istoric' %}">
+      <button class="button-menu">Istoric</button>
+    </a>
+    <a href="{% url 'logout' %}">
+      <button class="button-menu">logout</button>
+    </a>
+  {% else %}
   <a href = "{% url 'index' %}">
     <button class="button-menu">Home</button>
   </a>
@@ -23,13 +37,6 @@
   <a href = "{% url 'admin' %}">
     <button class="button-menu">Admin</button>
   </a>
-  {% if user.is_authenticated %}
-    <a href="{% url 'istoric' %}">
-      <button class="button-menu">Istoric</button>
-    </a>
-    <a href="{% url 'logout' %}">
-      <button class="button-menu">logout</button>
-    </a>
   {% endif %}
 </header>
 
