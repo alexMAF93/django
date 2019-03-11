@@ -20,7 +20,7 @@ def index(request):
             de_sters = DetaliiZi.objects.filter(data = object.data)
             de_sters.delete()
 
-    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.csv'
+    FILE = '/home/alex/Public/django/eduardcn_barbershop/eduardcn_barbershop/istoric.csv'
     for object in Programare.objects.all():
         if object.data not in next_2_weeks():
             with open(FILE, 'a') as f:
@@ -37,11 +37,16 @@ def index(request):
         return dictionary.get(key)
 
 
+    @register.filter
+    def get_list_item(List, i):
+        return List[int(i)]
+
+
     programari_ramase = {}
     for object in DetaliiZi.objects.all():
         max_programari = object.max_programari
         programari_facute = Programare.objects.filter(data = object.data).count()
-        programari_ramase[object.data] = max_programari - programari_facute
+        programari_ramase[object.data] = [max_programari - programari_facute, max_programari]
     return render(request, 'programari/index.html', {'next_2_weeks': next_2_weeks(), 'programari_ramase': programari_ramase})
 
 
@@ -177,7 +182,7 @@ def make_programare(request, date):
 
 @login_required
 def istoric(request):
-    FILE = '/home/alex/test_area/django/eduardcn_barbershop/eduardcn_barbershop/istoric.csv'
+    FILE = '/home/alex/Public/django/eduardcn_barbershop/eduardcn_barbershop/istoric.csv'
     f = open(FILE, 'r')
     content = f.readlines()
     f.close()

@@ -7,18 +7,22 @@
   {% cycle '<tr>' '' '' %}
     <td>
       <a href="programari/{{ z_date }}">
-        {% if programari_ramase|get_item:z_date >= 5 %}
+        {% if programari_ramase|get_item:z_date|get_list_item:0 >= 5 %}
           <button class="button-green">
-        {% elif programari_ramase|get_item:z_date < 5 and programari_ramase|get_item:z_date >= 3 %}
+        {% elif programari_ramase|get_item:z_date|get_list_item:0 < 5 and programari_ramase|get_item:z_date|get_list_item:0 >= 3 %}
           <button class="button-orange">
-        {% elif programari_ramase|get_item:z_date < 3 and programari_ramase|get_item:z_date >= 1 %}
+        {% elif programari_ramase|get_item:z_date|get_list_item:0 < 3 and programari_ramase|get_item:z_date|get_list_item:0 >= 1 %}
           <button class="button-orangered">
         {% else %}
           <button class="button-red">
         {% endif %}
         {{ z_date }}
         <br> {{ z_day }}
-        <br>{{ programari_ramase|get_item:z_date }} locuri disponibile
+	{% if programari_ramase|get_item:z_date|get_list_item:1 > 0 %}
+        <br>{{ programari_ramase|get_item:z_date|get_list_item:0 }} locuri disponibile
+	{% else %}
+	<br>Indisponibil
+	{% endif %}
           </button>
         </a>
     </td>
