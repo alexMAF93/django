@@ -6,7 +6,9 @@
 {% for z_date, z_day in next_2_weeks.items %}
   {% cycle '<tr>' '' '' %}
     <td>
+    {% if programari_ramase|get_item:z_date|get_list_item:1 > 0 %}
       <a href="programari/{{ z_date }}">
+    {% endif %}
         {% if programari_ramase|get_item:z_date|get_list_item:0 >= 5 %}
           <button class="button-green">
         {% elif programari_ramase|get_item:z_date|get_list_item:0 < 5 and programari_ramase|get_item:z_date|get_list_item:0 >= 3 %}
