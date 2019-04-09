@@ -1,0 +1,30 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+
+	{% if mangas %}
+		<table class="item-scroll" cellpadding="10"><tr>
+			{% for manga in mangas %}
+				<td>
+					    {% for key, value in manga.items %}
+					        {{ value }}<br>
+					    {% endfor %}<br>
+				</td>
+			{% endfor %}
+		</tr></table>
+	{% endif %}
+
+
+Cheltuieli {{ date }}<br>
+	{% if shoppings %}
+		{% for entry in shoppings %}
+			{{ entry }}<br>
+		{% endfor %}
+	{% endif %}
+	{% if amount %}
+		Total: {{ amount }}
+	{% endif %}
+	{% if errors %}
+		{{ errors }}
+	{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+.item-scroll {
+	position: absolute;
+	display: block;
+	top: 2em;
+
+	width: 60%;
+
+	font-size: 14;
+
+	animation-duration: 50s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-name: anim-scroll;
+	}
+
+@keyframes anim-scroll {
+	0%, 8.3% { left: -100%; opacity: 0; }
+  8.3%,25% { left: 25%; opacity: 1; }
+  33.33%, 100% { left: 110%; opacity: 0; }
+}

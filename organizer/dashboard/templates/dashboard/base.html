@@ -1,0 +1,18 @@
+{% load static %}
+
+<html>
+<head>
+	<meta http-equiv="refresh" content="300">
+    <link rel=stylesheet type="text/css" href="{% static 'dashboard/main.css' %}">
+    <title>Organizer</title>
+</head>
+
+<body>
+
+<div align="center">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
