@@ -13,18 +13,20 @@
 		</tr></table>
 	{% endif %}
 
-
-Cheltuieli {{ date }}<br>
-	{% if shoppings %}
-		{% for entry in shoppings %}
-			{{ entry }}<br>
-		{% endfor %}
-	{% endif %}
-	{% if amount %}
-		Total: {{ amount }}
-	{% endif %}
-	{% if errors %}
-		{{ errors }}
-	{% endif %}
-
+<div style="margin-top:300px;">
+	Cheltuieli {{ date }}<br>
+		{% if shoppings %}
+			<ul>
+				{% for entry in shoppings %}
+					<li>{{ entry }}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+		{% if amount %}
+			Total: {{ amount }}
+		{% endif %}
+		{% if errors %}
+			{{ errors }}
+		{% endif %}
+</div>
 {% endblock content %}
