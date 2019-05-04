@@ -1,0 +1,29 @@
+{% load static %}
+
+<html>
+<head>
+    <title>Eduard CN Barbershop</title>
+    <link rel="icon" type="image/png" href="{% static 'programari/ico.png' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'programari/main.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=0.65">
+</head>
+
+<body>
+
+<div id="cssmenu">
+    <div class="banner">
+        <a href="{% url 'index' %}">
+            <!--<img src="{% static 'programari/eduard_cn_logo.jpg' %}" style="border: 0;"/> -->
+            <button class="button-home"></button>
+        </a>
+    </div>
+</div>
+
+<div align="center">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+</body>
+</html>

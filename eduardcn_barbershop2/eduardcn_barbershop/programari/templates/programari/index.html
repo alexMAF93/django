@@ -1,0 +1,63 @@
+{% extends 'programari/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<a href="{% url 'admin_page' %}"><button class="button-menu">Admin</button></a><br>
+<a href="{% url 'logout' %}"><button class="button-menu">logout</button></a>
+{% endif %}
+{% for day in days %}
+   <div>
+         {% if day.3 > 0 %}
+            {% if day.2 >= 5 %}
+               <a href="programari/{{ day.0 }}/{{ day.1 }}">
+                  <button class="button-green">
+                     {{ day.0 }} <br>
+                     {{ day.1 }} <br>
+                     {{ day.2 }} locuri ramase
+                  </button>
+               </a>
+            {% elif day.2 <= 4 and day.2 > 1 %}
+               <a href="programari/{{ day.0 }}/{{ day.1 }}">
+                  <button class="button-orange">
+                     {{ day.0 }} <br>
+                     {{ day.1 }} <br>
+                     {{ day.2 }} locuri ramase
+                  </button>
+               </a>
+            {% elif day.2 == 1 %}
+               <a href="programari/{{ day.0 }}/{{ day.1 }}">
+                  <button class="button-orangered">
+                     {{ day.0 }} <br>
+                     {{ day.1 }} <br>
+                     {{ day.2 }} loc ramas
+                  </button>
+               </a>
+            {% else %}
+               <a href="programari/{{ day.0 }}/{{ day.1 }}">
+                  <button class="button-red">
+                     {{ day.0 }} <br>
+                     {{ day.1 }} <br>
+                     {{ day.2 }} locuri ramase
+                  </button>
+               </a>
+            {% endif %}
+         {% else %}
+            <a href="#">
+               <button class="button-red2">
+                  {{ day.0 }} <br>
+                  {{ day.1 }} <br>
+                  Indisponibil
+               </button>
+            </a>
+         {% endif %}
+   </div>
+<br>
+{% endfor %}
+
+{% if not user.is_authenticated %}
+<a href ="{% url 'admin_page' %}"><button class="button-menu">Autentificare</button></a>
+{% endif %}
+
+
+{% endblock content %}

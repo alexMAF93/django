@@ -1,0 +1,14 @@
+{% extends 'programari/base.html' %}
+
+{% block content %}
+
+Rezultatele cautarii:<br>
+<form method="post">
+    {% csrf_token %}
+    {% for date, name, phone, appointment_time in appointments %}
+        <input type="checkbox" name="to_delete" value="{{ date }}%{{ phone }}">
+        Data:{{ date }} - {{ name }} - {{ phone }}, la ora {{ appointment_time }}<br>
+    {% endfor %}
+    <input type="submit" name="delete_appointment" value="Sterge programarile selectate!">
+</form>
+{% endblock content %}

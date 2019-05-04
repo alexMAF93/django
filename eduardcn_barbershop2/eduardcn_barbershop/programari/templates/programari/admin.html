@@ -1,0 +1,36 @@
+{% extends 'programari/base.html' %}
+
+{% block content %}
+
+
+<form method="post">
+    {% csrf_token %}
+    Alege ziua pentru care vrei sa faci modificarea<br>
+    <select name="day_to_modify" class="search_categories">
+        {% for day in available_days %}
+            <option value = "{{ day.0 }}">{{ day.0 }}, {{ day.1 }}</option>
+        {% endfor %}
+    </select><br>
+
+
+    Introdu ora de start<br>
+    <input name="start_time" type="text"><br>
+
+    Introdu numarul maxim de programari<br>
+    <input name="max_appointments" type="text"><br>
+    <input type="submit" name="modify_day" value="Modifica!">
+</form>
+
+<form method="post">
+    {% csrf_token %}
+    Introdu numarul de telefon:<br>
+    <input name="phone" type="text"><br>
+    <input name="search_appointment" type="submit" value="Cauta programarea!">
+</form>
+
+{% if message %}
+    {% for msg in message %}
+        {{ msg }} <br>
+    {% endfor %}
+{% endif %}
+{% endblock content %}
