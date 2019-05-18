@@ -37,6 +37,23 @@
             </table>
         </form>
     {% endif %}
+{% else %}
+    <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="text-left">Nume</th>
+                        <th class="text-left">Ora</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">   
+                    {% for name, phone, time in appointments %}
+                        <tr>
+                            <td class="text-left">{{ name }}</td>
+                            <td class="text-left"> {{ time }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+    </table>
 {% endif %}
 
 {% if appointment_time %}
