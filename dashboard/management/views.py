@@ -8,4 +8,4 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return_dict = {'message': 'This is a test.'}
 
-    return render(request, 'programari/index.html', return_dict)
+    return render(request, 'management/index.html', return_dict)
