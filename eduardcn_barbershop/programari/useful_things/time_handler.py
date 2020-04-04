@@ -10,7 +10,8 @@ def get_next_2_weeks():
 
 
 def convert_days_to_ro(day):
-    days = { 'Monday': 'Luni',
+    days = { 
+             'Monday': 'Luni',
              'Tuesday': 'Marti',
              'Wednesday': 'Miercuri',
              'Thursday': 'Joi',
