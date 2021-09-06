@@ -1,19 +1,52 @@
 {% extends 'resist_temptation/base.html' %}
 
 {% block content %}
-
+<br>
+<br>
+<br>
 {{ date }}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <form method="post">
     {% csrf_token %}
-    
-    {% for temptation in temptations %}
-        <div>{{ temptation.temptation }} --- {{ temptation.resisted_count }} -- {{ temptation.gave_in_count }} - <button class="button-menu"class="button-green" type="submit" name="increase" value="{{ temptation.temptation }}" class="temptation">+</button><button type="submit" name="decrease" value="{{ temptation.temptation }}" class="temptation">-</button></div>
-    {% endfor %}
+    <table class="table-fill">
+        <thead>
+            <tr>
+                <th class="text-left">Temptation</th>
+                <th class="text-left">You resisted</th>
+                <th class="text-left">You gave in</th>
+                <th class="text-left">Resist</th>
+                <th class="text-left">Give in</th>
+            </tr>
+        </thead>
+        <tbody class="table-hover">
+            
+            {% for temptation in temptations %}
+                <tr>
+                    <td class="text-left">{{ temptation.temptation }}</td>
+                    <td class="text-left">{{ temptation.resisted_count }}</td>
+                    <td class="text-left">{{ temptation.gave_in_count }}</td>
+                    <td class="text-left">
+                        <button class="button-green" type="submit" name="increase" value="{{ temptation.temptation }}" class="temptation">+</button>
+                    </td>
+                    <td class="text-center" colspan="2"><button class="button-red"  type="submit" name="decrease" value="{{ temptation.temptation }}" class="temptation">+</button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
 
     Add temptation<br>
     <input name="temptation" type="text"><br>
     <br>
-        <button type="submit" name="add_temptation" value="Add!" class="temptation">
+        <button class="button-menu" type="submit" name="add_temptation" value="Add!" class="temptation">
             Add
         </button>
 </form>

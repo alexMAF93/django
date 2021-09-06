@@ -34,10 +34,10 @@ html, body{
 }
 
 .button-green {
-  width: 250px;
+  width: 50px;
   border: 0;
   border-radius: 0.15rem;
-  background: #1E88E5;
+  background: #077e17;
   color: white;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
@@ -72,10 +72,10 @@ html, body{
 }
 
 .button-red {
-  width: 250px;
+  width: 50px;
   border: 0;
   border-radius: 0.15rem;
-  background: #282828 ;
+  background: #d31d1d ;
   color: white;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
@@ -129,7 +129,7 @@ html, body{
   width: 155px;
   border: 0;
   border-radius: 0.35rem;
-  background: #956534;
+  background: #541fb6;
   color: white;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
@@ -275,7 +275,7 @@ input[type=submit]:active {
  
 th {
   color:#D5DDE5;;
-  background:#956534;
+  background:#541fb6;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:16px;
