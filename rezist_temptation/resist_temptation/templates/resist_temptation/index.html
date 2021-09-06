@@ -1,0 +1,22 @@
+{% extends 'resist_temptation/base.html' %}
+
+{% block content %}
+
+{{ date }}
+<form method="post">
+    {% csrf_token %}
+    
+    {% for temptation in temptations %}
+        <div>{{ temptation.temptation }} --- {{ temptation.resisted_count }} -- {{ temptation.gave_in_count }} - <button class="button-menu"class="button-green" type="submit" name="increase" value="{{ temptation.temptation }}" class="temptation">+</button><button type="submit" name="decrease" value="{{ temptation.temptation }}" class="temptation">-</button></div>
+    {% endfor %}
+
+    Add temptation<br>
+    <input name="temptation" type="text"><br>
+    <br>
+        <button type="submit" name="add_temptation" value="Add!" class="temptation">
+            Add
+        </button>
+</form>
+
+
+{% endblock content %}
