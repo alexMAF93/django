@@ -1,0 +1,25 @@
+{% extends 'resist_temptation/base.html' %}
+
+{% block content %}
+
+{% for plot_d in plot_div %}
+{% autoescape off %}
+{{ plot_d }}
+{% endautoescape %}
+{% endfor %}
+
+<br>
+<br>
+<a href="{% url 'good_habits' %}">
+   <button class="button-orange">
+      Back
+   </button>
+</a>
+<br>
+<a href="{% url 'index' %}">
+    <button class="button-orange">
+       Home
+    </button>
+ </a>
+
+{% endblock content %}

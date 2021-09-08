@@ -11,45 +11,33 @@
 <br>
 <br>
 <br>
-<form method="post">
-    {% csrf_token %}
-    <table class="table-fill">
-        <thead>
-            <tr>
-                <th class="text-left">Temptation</th>
-                <th class="text-left">You resisted</th>
-                <th class="text-left">You gave in</th>
-                <th class="text-left">Resist</th>
-                <th class="text-left">Give in</th>
-            </tr>
-        </thead>
-        <tbody class="table-hover">
-            
-            {% for temptation in temptations %}
-                <tr>
-                    <td class="text-left">{{ temptation.temptation }}</td>
-                    <td class="text-left">{{ temptation.resisted_count }}</td>
-                    <td class="text-left">{{ temptation.gave_in_count }}</td>
-                    <td class="text-left">
-                        <button class="button-green" type="submit" name="increase" value="{{ temptation.temptation }}" class="temptation">+</button>
-                    </td>
-                    <td class="text-center" colspan="2"><button class="button-red"  type="submit" name="decrease" value="{{ temptation.temptation }}" class="temptation">+</button></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <br>
-    <br>
 
-    Add temptation<br>
-    <input name="temptation" type="text"><br>
-    <br>
-        <button class="button-menu" type="submit" name="add_temptation" value="Add!" class="temptation">
-            Add
-        </button>
-</form>
+<a href="{% url 'good_habits' %}">
+    <button class="button-orange">
+       Good Habits
+    </button>
+ </a>
+
+ <a href="{% url 'temptations' %}">
+    <button class="button-orange">
+       Temptations
+    </button>
+ </a>
+
+ <br>
+ <a href="{% url 'good_habits_statistics' %}">
+   <button class="button-orange">
+      Good Habits Statistics
+   </button>
+</a>
+
+<a href="{% url 'temptations_statistics' %}">
+    <button class="button-orange">
+       Temptations Statistics
+    </button>
+ </a>
+
+
 
 
 {% endblock content %}
