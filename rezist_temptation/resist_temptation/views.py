@@ -97,9 +97,9 @@ def temptations_statistics(request):
     temptations = Temptation.objects.order_by().values('temptation').distinct()
     return_dict['plot_div'] = []
     for temptation in temptations:
-        x_data = [x.added_time for x in Temptation.objects.filter(temptation=temptation['temptation'])[:10]]
-        y1_data = [x.gave_in_count for x in Temptation.objects.filter(temptation=temptation['temptation'])[:10]]
-        y2_data = [x.resisted_count for x in Temptation.objects.filter(temptation=temptation['temptation'])[:10]]
+        x_data = [x.added_time for x in Temptation.objects.filter(temptation=temptation['temptation']).order_by('-added_time')[:7]]
+        y1_data = [x.gave_in_count for x in Temptation.objects.filter(temptation=temptation['temptation']).order_by('-added_time')[:7]]
+        y2_data = [x.resisted_count for x in Temptation.objects.filter(temptation=temptation['temptation']).order_by('-added_time')[:7]]
         max_range = max(y1_data) if max(y1_data) > max(y2_data) else max(y2_data)
         min_range = -1 * max_range
         layout = go.Layout(title=temptation['temptation'], dragmode=False, yaxis={'range': [min_range-2, max_range+2]})
@@ -120,8 +120,8 @@ def good_habits_statistics(request):
     habits = GoodHabit.objects.order_by().values('habit').distinct()
     return_dict['plot_div'] = []
     for habit in habits:
-        x_data = [x.added_time for x in GoodHabit.objects.filter(habit=habit['habit'])[:10]]
-        y_data = [x.performed_count for x in GoodHabit.objects.filter(habit=habit['habit'])[:10]]
+        x_data = [x.added_time for x in GoodHabit.objects.filter(habit=habit['habit']).order_by('-added_time')[:7]]
+        y_data = [x.performed_count for x in GoodHabit.objects.filter(habit=habit['habit']).order_by('-added_time')[:7]]
         max_range = max(y_data) + 1 if max(y_data) > 0 else 2
         min_range = -1 * max_range
         layout = go.Layout(title=habit['habit'], dragmode=False, yaxis={'range': [min_range, max_range]})
