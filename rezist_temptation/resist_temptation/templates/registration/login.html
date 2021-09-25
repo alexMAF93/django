@@ -1,0 +1,30 @@
+{% extends 'resist_temptation/base.html' %}
+{% block content %}
+
+<div align="center">
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Log In</button>
+</form>
+</div>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<div align="center">
+  <h4>Want an account? </h4>
+  <a href="{% url 'register' %}">
+    register here
+</a>
+  </div>
+{% endblock %}

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>Temptations</title>
+    <title>Habits and temptations</title>
     <!-- <link rel="icon" type="image/png" href="{% static 'programari/ico.png' %}"/> -->
     <link rel="stylesheet" type="text/css" href="{% static 'resist_temptation/main.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=0.65">
@@ -14,7 +14,29 @@
     {% block content %}
     {% endblock %}
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div align="center">
+    {% if user.is_authenticated %}
+    <p align=center>You're logged in as {{ user.username }}.</p>
+    <a href="{% url 'logout' %}">
+        <button class="button-black">
+            Log Out
+        </button>
+    </a>    
+    {% endif %}
+</div>
 
 
+
+</div>
 </body>
 </html>
