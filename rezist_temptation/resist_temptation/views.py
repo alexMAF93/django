@@ -45,9 +45,9 @@ def good_habits(request):
 
     todays_habits = GoodHabit.objects.filter(added_time=today, ignore=False, username=username)
     if len(todays_habits) == 0:
-        for habit in GoodHabit.objects.filter(ignore=False, username=username).distinct():
+        for habit in GoodHabit.objects.filter(ignore=False, username=username).order_by('habit').values_list('habit', flat=True).distinct():
             habit_to_add = GoodHabit(added_time=today,
-                                     habit=habit.habit,
+                                     habit=habit,
                                      username=username
                                                 )
             habit_to_add.save()
@@ -97,9 +97,9 @@ def temptations(request):
 
     todays_temptations = Temptation.objects.filter(added_time=today, ignore=False, username=username)
     if len(todays_temptations) == 0:
-        for temptation in Temptation.objects.filter(ignore=False, username=username).distinct():
+        for temptation in Temptation.objects.filter(ignore=False, username=username).order_by('temptation').values_list('temptation', flat=True).distinct():
             temptation_to_add = Temptation(added_time=today,
-                                            temptation=temptation.temptation,
+                                            temptation=temptation,
                                             resisted_count=0,
                                             gave_in_count=0,
                                             username=username
