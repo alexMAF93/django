@@ -19,7 +19,9 @@ def good_habits(request):
     if request.method == "POST":
         if 'add_habit' in request.POST:
             habit = str(request.POST['habit'])
-            already_exists = GoodHabit.objects.filter(added_time=today, habit=habit, username=username)[0]
+            already_exists = GoodHabit.objects.filter(added_time=today, habit=habit, username=username)
+            if len(already_exists) > 0:
+                already_exists = already_exists[0]
             if already_exists:
                 if already_exists.ignore == True:
                     already_exists.ignore = False
@@ -65,7 +67,9 @@ def temptations(request):
     if request.method == "POST":
         if 'add_temptation' in request.POST:
             temptation = str(request.POST['temptation'])
-            already_exists = Temptation.objects.filter(added_time=today, temptation=temptation, username=username)[0]
+            already_exists = Temptation.objects.filter(added_time=today, temptation=temptation, username=username)
+            if len(already_exists) > 0:
+                already_exists = already_exists[0]
             if already_exists:
                 if already_exists.ignore == True:
                     already_exists.ignore = False
